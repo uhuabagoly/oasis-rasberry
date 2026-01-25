@@ -221,6 +221,3 @@ Szenzor kábelek és árnyékolás: Földéljen az árnyékolás a GND-re (csak 
 Ne 5V-ot kösd a GPIO-ra! A Raspberry Pi GPIO lábai nem 5V-tűrők. Ha véletlenül 5V-ot (vagy annál nagyobb feszültséget, vagy föld alatti szintet) kötünk rájuk, akkor a processzor tönkremehet. Mindig 3.3V-ot használj a GPIO kimeneteken (például PWM jelek esetén, a PWMMOS modul optocsatolója fogad 3–20V-ot is).
 
 Közös föld nélkül nincs működés: Bármilyen jelátvitelhez és érzékeléshez kell egy referenciapont. Ha a Raspberry Pi és a perifériák között nincs összekötött GND, a jel nem záródik vissza, így a kapcsolat nem fog működni, vagy a mérések hamisak lesznek. Tehát minden modul, szenzor és a motorok tápegysége is legyen összekötve egy közös földre.
-
-## Záró gondolatok
-Ez a README teljes egészében használható GitHub projekthez. A rendszer stabil működéséhez tartsd be a tápellátási és földelési szabályokat, különösen az 5V és GPIO kérdését.
