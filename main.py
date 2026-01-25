@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import time
 import math
 import board
@@ -10,14 +9,15 @@ import adafruit_bh1750
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 import RPi.GPIO as GPIO
+import os
 
 # --- Konfiguráció ---
 WATER_PUMP_PIN = 13
 AIR_PUMP_PIN = 12
 PWM_FREQ = 1000
 
-MOISTURE_START_THRESHOLD = 0.0
-MOISTURE_STOP_THRESHOLD = 0.0
+MOISTURE_START_THRESHOLD = 30
+MOISTURE_STOP_THRESHOLD = 75
 
 AIR_PUMP_TIMES = ["08:00", "14:00", "20:00"]
 AIR_PUMP_DURATION = 600  # másodperc
@@ -257,7 +257,51 @@ try:
 
         print(f"    Víz pumpa: {'BE' if water_running else 'KI'} | Lég pumpa: {'BE' if air_running else 'KI'}")
         print("="*88)
-        time.sleep(1)
+
+
+
+
+
+
+
+        log_path = "/home/dev/oasis/data.txt"
+
+        MAX_SIZE = 5 * 1024 * 1024  # 5 MB -i hely
+
+        if os.path.exists(log_path):
+            if os.path.getsize(log_path) > MAX_SIZE:
+                ts = now.strftime("%Y%m%d_%H%M%S")
+                new_name = f"/home/dev/oasis/data_{ts}.txt"
+                os.rename(log_path, new_name)
+
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(f"{now_str} ")
+            f.write(f"{napszak} ") #Idő & Napszak
+
+            f.write(f"{moisture_pct:.1f} ") #Átlag talaj nedvesség
+
+            _, _, water_pct = read_water_level()
+            water_pct_s = f"{water_pct:.1f}" if water_pct is not None else "###"
+            f.write(f"{water_pct_s} ") #Vízszint (C03)
+
+            f.write(f"{avg_lux:.1f} " #Fény
+                    f"{'OK' if bh1750 else '###'} "
+                    f"{'OK' if bh1750_v2 else '###'} ")
+
+            if temp is not None:
+                f.write(f"{temp:.2f} {hum:.2f} {pres:.2f} ") #Hő, Pára, Nyomás
+            else:
+                f.write("### ")
+
+            if co2 is not None:
+                f.write(f"{co2} {temp_co2:.1f} {hum_co2:.1f} ") #  CO₂, SCD40 hő, 
+            else:
+                f.write("### ")
+
+            f.write(f"{'True' if water_running else 'False'} "
+                    f"{'True' if air_running else 'False'} \n")
+
+        time.sleep(0.01)
 
 except KeyboardInterrupt:
     print("\nLeállás... (Ctrl+C)")
