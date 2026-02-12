@@ -532,7 +532,7 @@ function renderDetailChart(historyArr) {
 /* ====== Start ====== */
 updateKPI(initialData);
 // polling every 10s for new data
-setInterval(fetchLatest, 10);
+setInterval(fetchLatest, 100);
 </script>
 </body>
 </html>
