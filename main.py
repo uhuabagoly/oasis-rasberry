@@ -147,6 +147,31 @@ def calculate_vpd(temp_c, rh_percent):
     ea = es*(rh_percent/100.0)
     return es - ea
 
+def check_cmd(which):
+    path = f"/home/dev/oasis/cmd_{which}.txt"
+    if os.path.exists(path):
+        try:
+            with open(path, "r") as fh:
+                cmd = fh.read().strip().lower()
+            if cmd == "on":
+                if which == "water":
+                    soft_start(pwm_water, 85, 2.0)
+                else:
+                    soft_start(pwm_air, 85, 2.0)
+                # jelzés: parancs feldolgozva
+                with open(path, "w") as fh:
+                    fh.write("done\n")
+            elif cmd == "off":
+                if which == "water":
+                    soft_stop(pwm_water, 85, 1.5)
+                else:
+                    soft_stop(pwm_air, 85, 1.5)
+                with open(path, "w") as fh:
+                    fh.write("done\n")
+        except Exception as e:
+            print("cmd check error", e)
+
+
 # --- Állapot változók ---
 water_running = False
 air_running = False
