@@ -326,7 +326,7 @@ try:
             f.write(f"{'True' if water_running else 'False'} "
                     f"{'True' if air_running else 'False'} \n")
 
-        time.sleep(0.0001)
+        time.sleep(0.001)
 
 except KeyboardInterrupt:
     print("\nLeállás... (Ctrl+C)")
