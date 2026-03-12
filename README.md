@@ -1,8 +1,6 @@
 # oasis-rasberry
 # Oasis — automata növényfelügyeleti és öntözőrendszer (README / Kézikönyv)
 
----
-
 ## Rövid összefoglaló
 Az **Oasis** egy Raspberry Pi Zero 2 W alapú, szenzorvezérelt automata növényfelügyeleti és öntözőrendszer. A rendszer talajnedvességet, fényt, CO₂-szintet, hőmérsékletet, páratartalmat, légnyomást és vízszintet mér, majd PWM-vezérléssel irányítja a víz- és légszivattyúkat. A működés hibatűrő, a mérések folyamatosan naplózásra kerülnek.
 
