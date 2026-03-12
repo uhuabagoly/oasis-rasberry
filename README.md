@@ -1,27 +1,6 @@
 # oasis-rasberry
 # Oasis — automata növényfelügyeleti és öntözőrendszer (README / Kézikönyv)
 
-> **Kézikönyv jellegű README** — minden leírt rész közvetlenül köthető a projekthez. A tartalom egyben, változtatás nélkül felhasználható GitHub-on.
-
----
-
-## Tartalomjegyzék
-- Rövid összefoglaló
-- Főbb képességek
-- BOM (alkatrészlista)
-- Előkészületek / szükséges eszközök
-- FONTOS FIGYELMEZTETÉSEK
-- GPIO kiosztás (pinout)
-- Bekötési útmutató — minden modulra kiterjedően
-- Tápellátás és WAGO csoportosítás
-- Fizikai rögzítés / szerelési tanácsok
-- Adatnaplózás és fájlrotáció
-- Telepítés és függőségek
-- Indítás / systemd szolgáltatás példa
-- Troubleshooting — tipikus hibák és megoldások
-- 3D nyomtatható ház — rövid logika
-- Záró gondolatok
-
 ---
 
 ## Rövid összefoglaló
