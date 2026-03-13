@@ -4,6 +4,9 @@
 ## Rövid összefoglaló
 Az **Oasis** egy Raspberry Pi Zero 2 W alapú, szenzorvezérelt automata növényfelügyeleti és öntözőrendszer. A rendszer talajnedvességet, fényt, CO₂-szintet, hőmérsékletet, páratartalmat, légnyomást és vízszintet mér, majd PWM-vezérléssel irányítja a víz- és légszivattyúkat. A működés hibatűrő, a mérések folyamatosan naplózásra kerülnek.
 
+![IMG_2530](https://github.com/user-attachments/assets/35633df5-94ad-414e-b274-617b26c73716)
+![IMG_2531](https://github.com/user-attachments/assets/f0dc3b59-eb52-4e5c-9996-8e98ee939e73)
+
 ---
 
 ## Főbb képességek
@@ -56,6 +59,8 @@ A GPIO-k kizárólag 3.3V-os jeleket fogadnak. 5V bemenet esetén a Raspberry Pi
 A Raspberry Pi, az összes szenzor, az ADS1115, a multiplexer, a PWMMOS-4 modul és a motorok tápegységének negatív pólusa közös földre kell, hogy legyen kötve.
 
 ---
+
+![IMG_2528](https://github.com/user-attachments/assets/f987c8e7-e73e-42a6-923a-990f5e9e66b1)
 
 ## GPIO kiosztás (BCM)
 | Funkció | GPIO |
